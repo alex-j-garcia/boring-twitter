@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000;
 const server = http.createServer((req, res) => {
   const html = fs.readFileSync('index.html');
   const script = fs.readFileSync('index.js');
+  const css = fs.readFileSync('styles.css');
 
   if (req.url == '/') {
     res.statusCode = 200;
@@ -17,6 +18,10 @@ const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
     res.end(script);
+  } else if (req.url == '/styles.css') {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/css');
+    res.end(css);
   } else if (req.url.includes('/search?users=')) {
     return getTwitterPayload(req.url)
       .then((twitterPayload) => getDailyTweets(twitterPayload))
@@ -65,7 +70,9 @@ const sendRequest = url => {
     headers: {'Authorization': `Bearer ${process.env.BEARER_TOKEN}`},
   })
     .then(response => response.data)
-    .catch(error => console.log('Error:', error.response));
+    .catch(({ response }) => {
+      console.log(`${response.status} - ${response.statusText}`)
+    });
 };
 
 const getAllTweets = async url => {
