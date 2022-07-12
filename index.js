@@ -16,19 +16,28 @@ function App() {
       .catch(error => console.log('Error: ', error))
   }, []);
 
-  const elements = tweets.map(({ author, topTweet }) => (
-    <p key={uuidv4()}>
-      <i>{author}</i>$ {topTweet.text}
-      <b>{topTweet.totalEngagement}</b>
-    </p>
-  ));
+  const elements = tweets.map(tweet => <Tweet tweet={tweet}/>);
 
   return (
-    <div>
+    <div class='app'>
       {tweets.length ?
         elements :
         <h1>Hello, React World!</h1>
       }
+    </div>
+  );
+}
+
+function Tweet(props) {
+  const { author, topTweet } = props.tweet;
+  
+  return (
+    <div key={uuidv4()} class='tweet'>
+      <p>
+        <span class='author'>{author}$ </span>
+        {topTweet.text}
+        <span class='engagement'>{topTweet.totalEngagement}</span>
+      </p>
     </div>
   );
 }
