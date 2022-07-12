@@ -10,3 +10,10 @@ html {
   padding: 0;
   box-sizing: inherit;
 }
+
+body {
+  background-color: hsl(0, 0%, 0%);
+  color: rgb(98, 162, 2);
+  font-size: 1.5rem;
+  font-family: 'Share Tech Mono', monospace;
+}

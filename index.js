@@ -18,7 +18,7 @@ function App() {
 
   const elements = tweets.map(({ author, topTweet }) => (
     <p key={uuidv4()}>
-      <i>{author}</i>: {topTweet.text}
+      <i>{author}</i>$ {topTweet.text}
       <b>{topTweet.totalEngagement}</b>
     </p>
   ));
