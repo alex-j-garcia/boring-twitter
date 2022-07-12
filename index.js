@@ -6,7 +6,8 @@ function App() {
     'naval',
     'mpjme',
     'unusual_whales',
-    'dsptch'
+    'dsptch',
+    'NavalismHQ',
   ];
 
   React.useEffect(() => {
@@ -28,9 +29,15 @@ function App() {
   );
 }
 
+function Header() {
+  return (
+    <h1>Boring Twitter</h1>
+  );
+}
+
 function Tweet(props) {
   const { author, topTweet } = props.tweet;
-  
+
   return (
     <div key={uuidv4()} class='tweet'>
       <p>

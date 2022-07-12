@@ -20,9 +20,15 @@ body {
 
 .app {
   width: 50%;
-  padding: 2rem;
+  padding: 1rem 3rem;
   border: 1px dashed hsl(84, 98%, 32%);
   margin: 0 auto;
+}
+
+.tweet {
+  border-bottom: 1px dotted hsl(84, 98%, 32%);
+  padding: 2rem 0;
+
 }
 
 .author {
@@ -31,4 +37,6 @@ body {
 
 .engagement {
   display: block;
+  text-align: center;
+  margin-top: 0.5rem;
 }
