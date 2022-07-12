@@ -1,0 +1,27 @@
+{
+  "name": "limit-twitter",
+  "version": "1.0.0",
+  "description": "Limits Twitter consumption by surfacing one daily tweet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-j-garcia/limit-twitter.git"
+  },
+  "author": "alex-j-garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex-j-garcia/limit-twitter/issues"
+  },
+  "homepage": "https://github.com/alex-j-garcia/limit-twitter#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "luxon": "^2.4.0"
+  }
+}
