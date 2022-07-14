@@ -8,6 +8,7 @@ function App() {
     'unusual_whales',
     'dsptch',
     'NavalismHQ',
+    'cnn',
   ];
 
   React.useEffect(() => {
@@ -17,10 +18,10 @@ function App() {
       .catch(error => console.log('Error: ', error))
   }, []);
 
-  const elements = tweets.map(tweet => <Tweet tweet={tweet}/>);
+  const elements = tweets.map(tweet => <Tweet key={uuidv4()} tweet={tweet}/>);
 
   return (
-    <div class='app'>
+    <div className='app'>
       {tweets.length ?
         elements :
         <h1>Hello, React World!</h1>
@@ -39,11 +40,11 @@ function Tweet(props) {
   const { author, topTweet } = props.tweet;
 
   return (
-    <div key={uuidv4()} class='tweet'>
+    <div className='tweet'>
       <p>
-        <span class='author'>{author}$ </span>
+        <span className='author'>{author}$ </span>
         {topTweet.text}
-        <span class='engagement'>{topTweet.totalEngagement}</span>
+        <span className='engagement'>{topTweet.totalEngagement}</span>
       </p>
     </div>
   );
