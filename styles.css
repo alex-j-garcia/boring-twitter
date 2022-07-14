@@ -19,16 +19,23 @@ body {
 }
 
 .app {
-  width: 50%;
+  max-width: 600px;
   padding: 1rem 3rem;
   border: 1px dashed hsl(84, 98%, 32%);
   margin: 0 auto;
 }
 
+.header {
+  border-bottom: 1px double hsl(84, 98%, 32%);
+}
+
 .tweet {
   border-bottom: 1px dotted hsl(84, 98%, 32%);
   padding: 2rem 0;
+}
 
+.text {
+  margin-bottom: 1rem;
 }
 
 .author {
@@ -39,4 +46,8 @@ body {
   display: block;
   text-align: center;
   margin-top: 0.5rem;
+}
+
+.tweet:last-of-type {
+  border-bottom: none;
 }

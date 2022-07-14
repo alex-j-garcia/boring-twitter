@@ -1,14 +1,10 @@
 function App() {
   const [tweets, setTweets] = React.useState([]);
   const users = [
-    'emeriticus',
-    'notaxation',
-    'naval',
-    'mpjme',
-    'unusual_whales',
-    'dsptch',
-    'NavalismHQ',
-    'cnn',
+    'emeriticus', 'notaxation', 'naval',
+    'mpjme', 'unusual_whales', 'dsptch',
+    'NavalismHQ', 'cnn', 'martyrmade',
+    'codylindley', 'highway_30',
   ];
 
   React.useEffect(() => {
@@ -22,6 +18,7 @@ function App() {
 
   return (
     <div className='app'>
+      <Header />
       {tweets.length ?
         elements :
         <h1>Hello, React World!</h1>
@@ -32,7 +29,10 @@ function App() {
 
 function Header() {
   return (
-    <h1>Boring Twitter</h1>
+    <div className='header'>
+      <h1>Boring Twitter</h1>
+      <p>No images, no videos, no retweets, no replies.</p>
+    </div>
   );
 }
 
@@ -41,10 +41,12 @@ function Tweet(props) {
 
   return (
     <div className='tweet'>
-      <p>
+      <p className='text'>
         <span className='author'>{author}$ </span>
         {topTweet.text}
-        <span className='engagement'>{topTweet.totalEngagement}</span>
+      </p>
+      <p className='engagement'>
+        ❤️ + 🔁 = {topTweet.totalEngagement}
       </p>
     </div>
   );
