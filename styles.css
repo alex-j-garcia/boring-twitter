@@ -27,6 +27,15 @@ body {
 
 .header {
   border-bottom: 1px double hsl(84, 98%, 32%);
+  margin-bottom: 2rem;
+}
+
+.loading {
+  margin: 3rem auto;
+  width: 75px;
+  height: 75px;
+  border: 5px dotted hsl(84, 98%, 32%);
+  border-radius: 50%;
 }
 
 .tweet {

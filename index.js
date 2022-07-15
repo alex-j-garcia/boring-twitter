@@ -1,11 +1,6 @@
 function App() {
   const [tweets, setTweets] = React.useState([]);
-  const users = [
-    'emeriticus', 'notaxation', 'naval',
-    'mpjme', 'unusual_whales', 'dsptch',
-    'NavalismHQ', 'cnn', 'martyrmade',
-    'codylindley', 'highway_30',
-  ];
+  const users = [/* list of users here */];
 
   React.useEffect(() => {
     fetch(`/search?users=${users.join(',')}`)
@@ -21,7 +16,7 @@ function App() {
       <Header />
       {tweets.length ?
         elements :
-        <h1>Hello, React World!</h1>
+        <LoadingSpinner />
       }
     </div>
   );
@@ -31,8 +26,31 @@ function Header() {
   return (
     <div className='header'>
       <h1>Boring Twitter</h1>
-      <p>No images, no videos, no retweets, no replies.</p>
+      <p>
+        No images, no videos, no retweets, no replies.
+        Just the most engaged daily tweet.
+      </p>
     </div>
+  );
+}
+
+function LoadingSpinner() {
+  React.useEffect(() => {
+    const loading = document.querySelector('.loading');
+    const intervalID = (() => {
+      let rotation = 90;
+      return setInterval(() => {
+        loading.style.transform = `rotate(${rotation}deg)`;
+        if (rotation == 360) rotation = 0
+        else rotation += 90;
+      }, 300);
+    })();
+
+    return () => clearInterval(intervalID);
+  }, []);
+
+  return (
+    <div className='loading'></div>
   );
 }
 
