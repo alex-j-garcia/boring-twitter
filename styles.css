@@ -30,12 +30,53 @@ body {
   margin-bottom: 2rem;
 }
 
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+.heading + p {
+  margin-bottom: 2rem;
+}
+
 .loading {
   margin: 3rem auto;
   width: 75px;
   height: 75px;
   border: 5px dotted hsl(84, 98%, 32%);
   border-radius: 50%;
+}
+
+.refresh {
+  width: 130px;
+  height: 36px;
+  border: none;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(84, 98%, 32%);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2rem;
+  border: 1px solid hsl(0, 0%, 23%);
+  border-radius: 7px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0px hsl(84, 98%, 32%),
+              2px 2px 0px hsl(84, 98%, 32%),
+              3px 3px 0px hsl(84, 98%, 32%),
+              4px 4px 0px hsl(84, 98%, 32%),
+              5px 5px 0px hsl(84, 98%, 32%),
+              6px 6px 0px hsl(84, 98%, 32%);
+}
+
+.refresh:active {
+  position: relative;
+  box-shadow: none;
+  left: 6px;
+  top: 6px;
 }
 
 .tweet {

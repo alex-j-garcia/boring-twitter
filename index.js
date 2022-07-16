@@ -1,6 +1,6 @@
 function App() {
   const [tweets, setTweets] = React.useState([]);
-  const users = [/* list of users here */];
+  const users = [/* Add @s here */];
 
   React.useEffect(() => {
     fetch(`/search?users=${users.join(',')}`)
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className='app'>
       <Header />
-      {tweets.length ?
+      {elements.length ?
         elements :
         <LoadingSpinner />
       }
@@ -25,12 +25,30 @@ function App() {
 function Header() {
   return (
     <div className='header'>
-      <h1>Boring Twitter</h1>
+      <div className='heading'>
+        <h1>Boring Twitter</h1>
+        <RefreshButton />
+      </div>
       <p>
         No images, no videos, no retweets, no replies.
         Just the most engaged daily tweet.
       </p>
     </div>
+  );
+}
+
+function RefreshButton() {
+  React.useEffect(() => {
+    const refreshBtn = document.querySelector('.refresh');
+    const reload = () => window.location.reload();
+    refreshBtn.addEventListener('click', reload);
+    return () => refreshBtn.removeEventListener('click', reload);
+  }, []);
+
+  return (
+    <button className='refresh'>
+      Refresh 🔄
+    </button>
   );
 }
 
