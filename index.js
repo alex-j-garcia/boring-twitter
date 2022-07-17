@@ -9,13 +9,11 @@ function App() {
       .catch(error => console.log('Error: ', error))
   }, []);
 
-  const elements = tweets.map(tweet => <Tweet key={uuidv4()} tweet={tweet}/>);
-
   return (
     <div className='app'>
       <Header />
-      {elements.length ?
-        elements :
+      {tweets.length ?
+        <Feed tweets={tweets} /> :
         <LoadingSpinner />
       }
     </div>
@@ -72,11 +70,29 @@ function LoadingSpinner() {
   );
 }
 
-function Tweet(props) {
-  const { author, topTweet } = props.tweet;
+function Feed({ tweets }) {
+  const elements = tweets.map(tweet => {
+    const { id } = tweet.topTweet;
+    return (
+      <Tweet
+        key={id}
+        id={id}
+        tweet={tweet}
+      />
+    );
+  });
 
   return (
-    <div className='tweet'>
+    <ul>
+      {elements}
+    </ul>
+  );
+}
+
+function Tweet(props) {
+  const { author, topTweet } = props.tweet;
+  return (
+    <li className='tweet'>
       <p className='text'>
         <span className='author'>{author}$ </span>
         {topTweet.text}
@@ -84,7 +100,7 @@ function Tweet(props) {
       <p className='engagement'>
         ❤️ + 🔁 = {topTweet.totalEngagement}
       </p>
-    </div>
+    </li>
   );
 }
 

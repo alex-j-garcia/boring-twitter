@@ -102,9 +102,9 @@ const getDailyTweets = payload => {
 const removeNonTweets = allData => allData.filter((user) => user.tweets);
 
 const calcEngagement = tweets => {
-  return tweets.map(({ text, public_metrics }) => {
+  return tweets.map(({ text, id, public_metrics }) => {
     const { like_count, retweet_count } = public_metrics;
-    return { text, totalEngagement: like_count + retweet_count };
+    return { text, id, totalEngagement: like_count + retweet_count };
   });
 };
 
