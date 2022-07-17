@@ -46,9 +46,17 @@ const getUtcDate = () => {
   return date.toString();
 };
 
-const getTwitterPayload = (query) => {
+const removeDuplicates = queryUsers => {
+  const users = [];
+  queryUsers.forEach(user => {
+    if (!users.includes(user)) users.push(user);
+  });
+  return users;
+}
+
+const getTwitterPayload = query => {
   const userString = query.substring(query.indexOf('=') + 1);
-  const usersArray = userString.split(',');
+  const usersArray = removeDuplicates(userString.split(','));
 
   const data = usersArray.map(
     user => {
