@@ -27,8 +27,8 @@ const users = [
 
 ...you'll get a feed that looks like:
 
-| Boring Twitter |
----
-| cnn$ The Blue Angels, the US Navy's elite flight demonstration squadron, has selected the first female fighter jet demonstration pilot for their upcoming season
-| BBCBreaking$ Tom Tugendhat out of race to be Conservative leader and next UK prime minister after latest vote |
-|nytimes$ The changing of the guard ceremony at Buckingham Palace on Monday was shortened because of the heat wave hitting Britain, a spokesman for the British Army said.|
+Boring Twitter |
+---|
+cnn$ The Blue Angels, the US Navy's elite flight demonstration squadron, has selected the first female fighter jet demonstration pilot for their upcoming season
+BBCBreaking$ Tom Tugendhat out of race to be Conservative leader and next UK prime minister after latest vote 
+nytimes$ The changing of the guard ceremony at Buckingham Palace on Monday was shortened because of the heat wave hitting Britain, a spokesman for the British Army said.
