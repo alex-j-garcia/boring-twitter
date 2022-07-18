@@ -24,7 +24,8 @@ const server = http.createServer((req, res) => {
     res.end(css);
   } else if (req.url.includes('/search?users=')) {
     return getTwitterPayload(req.url)
-      .then((twitterPayload) => getDailyTweets(twitterPayload))
+      .then((twitterPayload) => twitterPayload.length ?
+         getDailyTweets(twitterPayload): twitterPayload)
       .then(resp => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
@@ -54,10 +55,13 @@ const removeDuplicates = queryUsers => {
   return users;
 }
 
-const getTwitterPayload = query => {
-  const userString = query.substring(query.indexOf('=') + 1);
-  const usersArray = removeDuplicates(userString.split(','));
+const getTwitterPayload = async query => {
+  let userString = '';
+  if (!(userString = query.substring(query.indexOf('=') + 1))) {
+    return [];
+  }
 
+  const usersArray = removeDuplicates(userString.split(','));
   const data = usersArray.map(
     user => {
       return getAllTweets(

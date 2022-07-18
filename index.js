@@ -1,18 +1,22 @@
 function App() {
   const [tweets, setTweets] = React.useState([]);
+  const [noTweets, setNoTweets] = React.useState(false);
   const users = [/* Add @s here */];
 
   React.useEffect(() => {
     fetch(`/search?users=${users.join(',')}`)
       .then(res => res.json())
-      .then(data => setTweets(data))
+      .then(data => {
+        if (data.length) setTweets(data)
+        else setNoTweets(true)
+      })
       .catch(error => console.log('Error: ', error))
   }, []);
 
   return (
     <div className='app'>
       <Header />
-      {tweets.length ?
+      {tweets.length || noTweets ?
         <Feed tweets={tweets} /> :
         <LoadingSpinner />
       }
@@ -84,7 +88,7 @@ function Feed({ tweets }) {
 
   return (
     <ul>
-      {elements}
+      {elements.length ? elements : "No new tweets"}
     </ul>
   );
 }
